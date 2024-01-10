@@ -1,5 +1,9 @@
 <html layout:decorate="~{layout}">
 <div layout:fragment="content">
+    <form action="/article/list" method="post">
+        <input type="text" id="keyword">
+        <button type="submit">찾기</button>
+    </form>
     <table>
         <thead>
         <tr>
