@@ -1,6 +1,18 @@
-<h3 th:text="${article.title}"></h3>
-<p th:text="${article.content}"></p>
+<html layout:decorate="~{layout}">
+<div layout:fragment="content">
+    <h3 th:text="${article.title}"></h3>
+    <p th:text="${article.content}"></p>
+    <div class="my-3">
+        <a th:href="@{|/article/modify/${article.id}|}"
+           sec:authorize="isAuthenticated()"
+           th:if="${article.author != null and #authentication.getPrincipal().getUsername() == article.author.username}"
+           th:text="수정"></a>
+        <a th:href="@{|/article/delete/${article.id}|}"
+           sec:authorize="isAuthenticated()"
+           th:if="${article.author != null and #authentication.getPrincipal().getUsername() == article.author.username}"
+           th:text="삭제"></a>
+    </div>
 
-<a th:href="@{/article/list}">목록</a>
-
-<button TYPE="submit">게시판</button>
+    <a th:href="@{/article/list}">목록</a>
+</div>
+</html>

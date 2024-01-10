@@ -1,5 +1,6 @@
 package com.board.basic.article;
 
+import com.board.basic.user.SiteUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,14 +13,25 @@ import java.util.Optional;
 public class ArticleService {
     private final ArticleRepository articleRepository;
 
-    public void create(String title, String content) {
+    public void create(String title, String content, SiteUser user) {
         Article article = new Article();
         article.setTitle(title);
         article.setContent(content);
+        article.setAuthor(user);
         article.setCreateDate(LocalDateTime.now());
 
         this.articleRepository.save(article);
 
+    }
+
+    public void modify(Article article, String title, String content) {
+        article.setTitle(title);
+        article.setContent(content);
+        this.articleRepository.save(article);
+    }
+
+    public void delete(Article article) {
+        this.articleRepository.delete(article);
     }
 
     public Article getArticle(Integer id) {
