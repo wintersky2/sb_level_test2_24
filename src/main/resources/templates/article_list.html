@@ -1,9 +1,16 @@
 <html layout:decorate="~{layout}">
 <div layout:fragment="content">
-    <form action="/article/list" method="post">
-        <input type="text" id="keyword">
-        <button type="submit">찾기</button>
-    </form>
+    <div>
+        <div>
+            <a th:href="@{/article/create}">Article 등록</a>
+        </div>
+        <div>
+            <div>
+                <input type="text" id="search_kw" th:value="${keyword}">
+                <button type="button" id="btn_search">찾기</button>
+            </div>
+        </div>
+    </div>
     <table>
         <thead>
         <tr>
@@ -17,7 +24,9 @@
             <td th:text="${article.createDate}"></td>
         </tr>
         </tbody>
-        <a th:href="@{/article/create}">Article 등록</a>
     </table>
+    <form th:action="@{/article/list}" method="get" id="searchForm">
+        <input type="hidden" id="keyword" name="keyword" th:value="${keyword}">
+    </form>
 </div>
 </html>

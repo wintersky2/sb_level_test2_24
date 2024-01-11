@@ -28,6 +28,7 @@ public class ArticleController {
     public String list(Model model, @RequestParam(value = "keyword", defaultValue = "") String keyword) {
         List<Article> articleList = this.articleService.getList(keyword);
         model.addAttribute("articleList", articleList);
+        model.addAttribute("keyword",keyword);
         return "article_list";
     }
 
