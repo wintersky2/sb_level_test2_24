@@ -39,7 +39,7 @@ public class ArticleService {
         return article.get();
     }
 
-    public List<Article> getList(String keyword) {
-        return this.articleRepository.findAllByKeyword(keyword);
+    public List<Article> getList(String kw) {
+        return this.articleRepository.findAllByKeyword(kw);
     }
 }

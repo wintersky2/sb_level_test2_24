@@ -14,8 +14,8 @@ public interface ArticleRepository extends JpaRepository<Article, Integer> {
             + "from Article A "
             + "left outer join SiteUser U on A.author=U "
             + "where "
-            + "   A.title like %:keyword% "
-            + "   or A.content like %:keyword% "
-            + "   or U.username like %:keyword% ")
-    List<Article> findAllByKeyword(@Param("keyword") String keyword);
+            + "   A.title like %:kw% "
+            + "   or A.content like %:kw% "
+            + "   or U.username like %:kw% ")
+    List<Article> findAllByKeyword(@Param("kw") String kw);
 }

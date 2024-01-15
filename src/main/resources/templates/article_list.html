@@ -6,8 +6,10 @@
         </div>
         <div>
             <div>
-                <input type="text" id="search_kw" th:value="${keyword}">
-                <button type="button" id="btn_search">찾기</button>
+                <form action="/article/list" method="get" id="searchForm">
+                    <input type="text" id="kw" name="kw" th:value="${kw}">
+                    <button type="submit" id="btn_search">찾기</button>
+                </form>
             </div>
         </div>
     </div>
@@ -25,8 +27,5 @@
         </tr>
         </tbody>
     </table>
-    <form th:action="@{/article/list}" method="get" id="searchForm">
-        <input type="hidden" id="keyword" name="keyword" th:value="${keyword}">
-    </form>
 </div>
 </html>
